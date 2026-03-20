@@ -1,0 +1,28 @@
+﻿{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Полезные ресурсы{% endblock %}
+{% block content %}
+<h2>Полезные ресурсы об автомобилях</h2>
+<p class="intro">Мы собрали для вас несколько интересных сайтов, где можно почитать про автомобили, найти запчасти или изучить историю марок.</p>
+
+<div class="link-block">
+    <a href="https://www.drive2.ru/" target="_blank">
+        <img src="{% static 'content/drive2.ru_logo.jpeg' %}" alt="Drive2.ru">
+    </a>
+    <p>Крупнейшее сообщество автолюбителей. Здесь публикуют бортовые журналы своих машин, делятся опытом ремонта и тюнинга.</p>
+</div>
+
+<div class="link-block">
+    <a href="https://auto.ru/" target="_blank">
+        <img src="{% static 'content/auto.ru_logo.jpeg' %}" alt="Auto.ru">
+    </a>
+    <p>Крупнейшая площадка по продаже автомобилей в России. Удобный поиск, множество объявлений, отзывы о дилерах.</p>
+</div>
+
+<div class="link-block">
+    <a href="https://www.kolesa.ru/" target="_blank">
+        <img src="{% static 'content/kolesa_logo.jpg' %}" alt="Колеса.ру">
+    </a>
+    <p>Новости автомобильного мира, тест-драйвы новинок, обзоры, каталог машин и полезные советы.</p>
+</div>
+{% endblock %}

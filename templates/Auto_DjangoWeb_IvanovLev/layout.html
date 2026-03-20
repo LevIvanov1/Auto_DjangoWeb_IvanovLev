@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{% block title %}AutoStory{% endblock %}</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'iconka.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <div class="header-with-logo">
+            <a href="{% url 'home' %}" class="logo-link">
+                <img src="{% static 'content/logo.jpeg' %}" alt="AutoStory" class="logo">
+            </a>
+            <h1>AUTOSTORY: АВТО С ИСТОРИЕЙ</h1>
+        </div>
+
+        <div class="menu">
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'links' %}">Полезные ссылки</a>
+            <a href="{% url 'contact' %}">Контакты</a>
+            <a href="{% url 'about' %}">О нас</a>
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <hr />
+        <footer>
+            <p>AutoStory - Автомобили с историей</p>
+        </footer>
+    </div>
+</body>
+</html>
