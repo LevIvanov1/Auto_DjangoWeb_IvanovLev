@@ -1,0 +1,35 @@
+﻿{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Отзывы{% endblock %}
+{% block content %}
+<h2>Ваше мнение важно для нас</h2>
+<p class="intro">Пожалуйста, оставьте свой отзыв о работе сайта. Это поможет нам стать лучше!</p>
+
+{% if form %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить отзыв</button>
+</form>
+{% else %}
+<h3>Спасибо за ваш отзыв!</h3>
+<p>Мы получили следующие данные:</p>
+<ul>
+    <li><strong>Имя:</strong> {{ data.name }}</li>
+    <li><strong>Оценка сайта:</strong> {{ data.rating }}</li>
+    <li><strong>Удобство использования:</strong> {{ data.usability }}</li>
+    <li>
+        <strong>Понравилось:</strong>
+        {% if data.features %}
+        {% for f in data.features %}{{ f }}{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% else %}
+        Не выбрано
+        {% endif %}
+    </li>
+    <li><strong>Рекомендация:</strong> {{ data.recommendations }}</li>
+    <li><strong>Пожелания:</strong> {{ data.message|default:"Не указано" }}</li>
+    <li><strong>Подписка на новости:</strong> {% if data.contact %}Да{% else %}Нет{% endif %}</li>
+</ul>
+<a href="{% url 'pool' %}">Заполнить снова</a>
+{% endif %}
+{% endblock %}

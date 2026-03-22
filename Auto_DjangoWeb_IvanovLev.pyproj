@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="auto\admin.py" />
     <Compile Include="auto\apps.py" />
+    <Compile Include="auto\forms.py" />
     <Compile Include="auto\migrations\__init__.py" />
     <Compile Include="auto\models.py" />
     <Compile Include="auto\tests.py" />
@@ -58,6 +59,7 @@
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\index.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\layout.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\links.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\pool.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="auto\" />
