@@ -53,6 +53,7 @@
     <Content Include="requirements.txt" />
     <Content Include="static\content\logo.jpeg" />
     <Content Include="static\content\kolesa_logo.jpg" />
+    <Content Include="static\scripts\jquery-1.10.2.js" />
     <Content Include="static\vaz_set.jpeg" />
     <Content Include="static\ВАЗ_2102.jpg" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\contacts.html" />
@@ -68,6 +69,7 @@
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="static\content\" />
+    <Folder Include="static\scripts\" />
     <Folder Include="templates\" />
     <Folder Include="templates\Auto_DjangoWeb_IvanovLev\" />
   </ItemGroup>

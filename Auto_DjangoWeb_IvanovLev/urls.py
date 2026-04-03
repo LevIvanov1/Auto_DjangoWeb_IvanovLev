@@ -27,5 +27,8 @@ urlpatterns = [
     path('links/', views.links, name='links'),
     path('contacts/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
+    path('pool/', views.pool, name='pool'),
+
+    # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
 ]

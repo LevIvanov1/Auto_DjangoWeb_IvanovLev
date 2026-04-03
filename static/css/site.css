@@ -210,3 +210,56 @@ a {
     a:hover {
         color: #f39c12;
     }
+
+form {
+    margin-top: 20px;
+
+}
+
+    form p {
+        margin-bottom: 15px;
+    }
+
+    form label {
+        display: inline-block;
+        width: 300px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+
+    form input, form select, form textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form ul {
+
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        color: inherit;
+        box-shadow: none;
+    }
+
+    form li {
+
+        margin: 5px 0;
+        padding: 0;
+        border-color: blue;
+    }
+
+    form button {
+        background: #34495e;
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-left: 350px
+    }
+
+        form button:hover {
+            background: #f39c12;
+            color: #2c3e50;
+        }

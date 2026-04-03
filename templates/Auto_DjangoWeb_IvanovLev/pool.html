@@ -9,27 +9,46 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Отправить отзыв</button>
+    <button type="submit" id="submitBtn">Отправить отзыв</button>
 </form>
 {% else %}
 <h3>Спасибо за ваш отзыв!</h3>
 <p>Мы получили следующие данные:</p>
 <ul>
-    <li><strong>Имя:</strong> {{ data.name }}</li>
-    <li><strong>Оценка сайта:</strong> {{ data.rating }}</li>
-    <li><strong>Удобство использования:</strong> {{ data.usability }}</li>
+    <li>Имя: {{ data.name }}</li>
+    <li>Оценка сайта: {{ data.rating }}</li>
+    <li>Удобство использования: {{ data.usability }}</li>
     <li>
-        <strong>Понравилось:</strong>
+        Понравилось:
         {% if data.features %}
         {% for f in data.features %}{{ f }}{% if not forloop.last %}, {% endif %}{% endfor %}
         {% else %}
         Не выбрано
         {% endif %}
     </li>
-    <li><strong>Рекомендация:</strong> {{ data.recommendations }}</li>
-    <li><strong>Пожелания:</strong> {{ data.message|default:"Не указано" }}</li>
-    <li><strong>Подписка на новости:</strong> {% if data.contact %}Да{% else %}Нет{% endif %}</li>
+    <li>Рекомендация: {{ data.recommendations }}</li>
+    <li>Пожелания: {{ data.message|default:"Не указано" }}</li>
+    <li>Подписка на новости: {% if data.contact %}Да{% else %}Нет{% endif %}</li>
 </ul>
 <a href="{% url 'pool' %}">Заполнить снова</a>
 {% endif %}
+
+<script>
+    $(document).ready(function () {
+        $('#submitBtn').mouseover(function () {
+            $(this).css('background-color', '#f39c12');
+            $(this).css('color', '#2c3e50');
+        });
+        $('#submitBtn').mouseout(function () {
+            $(this).css('background-color', '#34495e');
+            $(this).css('color', 'white');
+        });
+        $('input, select, textarea').focus(function () {
+            $(this).css('background-color', '#fff8e1');
+        });
+        $('input, select, textarea').blur(function () {
+            $(this).css('background-color', 'white');
+        });
+    });
+</script>
 {% endblock %}
