@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import PoolForm
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
+from .models import Blog
+
 # Функции = контроллеры
 
 def index(request):
@@ -44,3 +46,16 @@ def registration(request):
         regform = UserCreationForm()
     
     return render(request, 'Auto_DjangoWeb_IvanovLev/registration.html', {'regform': regform})
+
+def blog(request):
+    posts = Blog.objects.all()
+    return render(request, 'Auto_DjangoWeb_IvanovLev/blog.html', {
+        'title': 'Блог',
+        'posts': posts,
+    })
+
+def blogpost(request, parametr):
+    post_1 = Blog.objects.get(id=parametr)
+    return render(request, 'Auto_DjangoWeb_IvanovLev/blogpost.html', {
+        'post_1': post_1,
+    })

@@ -42,6 +42,8 @@ urlpatterns = [
             },
         ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('blog/', views.blog, name='blog'),
+    path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
 
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),

@@ -1,0 +1,13 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | {{ title }}{% endblock %}
+{% block content %}
+<h2>{{ title }}</h2>
+{% for post in posts %}
+<hr>
+<h3>{{ post.title }}</h3>
+<p><em>{{ post.posted }}</em></p>
+<p>{{ post.description }}</p>
+<p><a href="{% url 'blogpost' parametr=post.id %}">Читать далее</a></p>
+{% endfor %}
+{% endblock %}

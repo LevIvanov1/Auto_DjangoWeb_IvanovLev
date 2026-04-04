@@ -1,0 +1,8 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | {{ post_1.title }}{% endblock %}
+{% block content %}
+<h2>{{ post_1.title }}</h2>
+<p>{{ post_1.content|linebreaksbr }}</p>
+<p><a href="{% url 'blog' %}">Назад к списку статей</a></p>
+{% endblock %}
