@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+from django.utils.translation import gettext_lazy as _
 
 class PoolForm(forms.Form):
     name = forms.CharField(
@@ -45,3 +47,15 @@ class PoolForm(forms.Form):
         label='Согласен на получение новостей сайта',
         required=False
     )
+
+class BootstrapAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(max_length=254,
+                               widget=forms.TextInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'Имя пользователя'
+                               }))
+    password = forms.CharField(label=_("Password"),
+                               widget=forms.PasswordInput({
+                                   'class': 'form-control',
+                                   'placeholder': 'Пароль'
+                               }))

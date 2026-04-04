@@ -1,0 +1,12 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Регистрация{% endblock %}
+{% block content %}
+<h2>Регистрация пользователя</h2>
+    <form method="POST"> {% csrf_token %}
+        <div>
+            {{ regform.as_p }}
+            <button type="submit">Зарегистрировать</button>
+        </div>
+    </form>
+{% endblock %}

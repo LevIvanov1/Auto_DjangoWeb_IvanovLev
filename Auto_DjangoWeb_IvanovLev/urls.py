@@ -18,8 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from auto import views
+from auto import forms, views
 from django.views.generic.base import RedirectView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import views as auth_views
+from datetime import datetime
+ 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +32,16 @@ urlpatterns = [
     path('contacts/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('pool/', views.pool, name='pool'),
+    path('registration/', views.registration, name='registration'),
+    path('login/', auth_views.LoginView.as_view(
+            template_name='Auto_DjangoWeb_IvanovLev/login.html',
+            authentication_form=forms.BootstrapAuthenticationForm,
+            extra_context={
+                'title': 'Вход',
+                'year': datetime.now().year,
+            },
+        ), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),

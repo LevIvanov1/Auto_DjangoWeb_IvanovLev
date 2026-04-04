@@ -60,7 +60,9 @@
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\index.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\layout.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\links.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\login.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\pool.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\registration.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="auto\" />
