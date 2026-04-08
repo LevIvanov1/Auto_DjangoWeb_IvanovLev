@@ -4,5 +4,31 @@
 {% block content %}
 <h2>{{ post_1.title }}</h2>
 <p>{{ post_1.content|linebreaksbr }}</p>
+
+<hr>
+
+{% if user.is_authenticated %}
+<h3>Добавить комментарий</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить комментарий</button>
+</form>
+{% else %}
+<h3>Для добавления комментария, пожалуйста, будьте авторизованы!</h3>
+{% endif %}
+
+<hr>
+
+<h3>Комментарии:</h3>
+{% for comment in comments %}
+<div class="comment">
+    <strong>{{ comment.author }}</strong> <em>{{ comment.date }}</em>
+    <p>{{ comment.text|linebreaksbr }}</p>
+</div>
+{% empty %}
+<p>Пока нет комментариев. Будьте первым!</p>
+{% endfor %}
+
 <p><a href="{% url 'blog' %}">Назад к списку статей</a></p>
 {% endblock %}

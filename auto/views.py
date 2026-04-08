@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import PoolForm
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-from .models import Blog
+from .models import Blog, Comment
+from .forms import PoolForm, CommentForm
 
 # Функции = контроллеры
 
@@ -56,6 +56,22 @@ def blog(request):
 
 def blogpost(request, parametr):
     post_1 = Blog.objects.get(id=parametr)
+    comments = Comment.objects.filter(post=parametr)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment_f = form.save(commit=False)
+            comment_f.author = request.user
+            comment_f.date = datetime.now()
+            comment_f.post = post_1
+            comment_f.save()
+            return redirect('blogpost', parametr=post_1.id)
+    else:
+        form = CommentForm()
+
     return render(request, 'Auto_DjangoWeb_IvanovLev/blogpost.html', {
         'post_1': post_1,
+        'comments': comments,
+        'form': form,
     })

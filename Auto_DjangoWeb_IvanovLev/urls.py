@@ -48,3 +48,6 @@ urlpatterns = [
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
 ]
+
+
+# https://apps.openedu.ru/learning/course/course-v1:spbstu+WEBPYT+spring_2026/block-v1:spbstu+WEBPYT+spring_2026+type@sequential+block@a63aa49cb1e64f5f934504461885b6ed/block-v1:spbstu+WEBPYT+spring_2026+type@vertical+block@724944e57008430da92ffffb6aa366bb

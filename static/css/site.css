@@ -276,3 +276,20 @@ h3 a, h3 a:visited {
     h3 a:hover {
         text-decoration: underline;
     }
+
+.comment {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #c0392b;
+}
+
+    .comment strong {
+        color: #2c3e50;
+    }
+
+    .comment em {
+        color: #7f8c8d;
+        font-size: 12px;
+    }
