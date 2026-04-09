@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="static\content\auto.ru_logo.jpeg" />
+    <Content Include="static\content\banner1.jpg" />
+    <Content Include="static\content\banner2.jpg" />
+    <Content Include="static\content\banner3.jpg" />
     <Content Include="static\css\site.css" />
     <Content Include="static\content\drive2.ru_logo.jpeg" />
     <Content Include="static\fon.jpg" />

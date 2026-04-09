@@ -1,11 +1,12 @@
 ﻿body {
     background: url("/static/fon.jpg") no-repeat center center fixed;
     background-size: cover;
+    font-family: Georgia, 'Times New Roman', Times, serif, Arial, sans-serif;
 }
 
 .container {
     background: rgba(255, 255, 255, 0.85);
-    width: 900px;
+    width: 1100px;
     margin: 0 auto;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -64,6 +65,13 @@
             transform: scale(1.05);
         }
 
+    .menu button {
+        background: #34495e;
+        color: #ecf0f1;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
 h1 {
     color: #c0392b;
     text-align: center;
@@ -110,7 +118,6 @@ img {
     max-width: 100%;
     height: auto;
     border: 8px solid #bdc3c7;
-    border-radius: 12px;
     margin: 15px auto;
     display: block;
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
@@ -250,13 +257,9 @@ form {
     }
 
     form button {
-        background: #34495e;
-        color: white;
         padding: 10px 30px;
         border: none;
         border-radius: 10px;
-        font-size: 16px;
-        margin-left: 350px
     }
 
         form button:hover {
@@ -293,3 +296,45 @@ h3 a, h3 a:visited {
         color: #7f8c8d;
         font-size: 12px;
     }
+
+.carousel {
+    margin-bottom: 30px;
+}
+
+    .carousel .item {
+        height: 450px;
+        background-color: #000;
+    }
+
+        .carousel .item img {
+            border: none !important;
+            margin: 0 !important;
+            width: 100%;
+            box-shadow: none !important;
+        }
+
+            .carousel .item img:hover {
+                transform: none !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+.carousel-control {
+    background: none !important;
+}
+
+    .carousel-control:hover {
+        background: none !important;
+    }
+
+.carousel-caption p {
+    background: rgba(0,0,0,0.6);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.carousel-control {
+    background: none;
+}
