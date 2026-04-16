@@ -26,6 +26,10 @@
             <a href="{% url 'contact' %}">Контакты</a>
             <a href="{% url 'about' %}">О нас</a>
             <a href="{% url 'pool' %}">Отзывы</a>
+            {% if user.is_superuser %}
+            <a href="{% url 'newpost' %}">Добавить статью</a>
+            {% endif %}
+            <a href="{% url 'videopost' %}">Видео</a>
             <a href="{% url 'registration' %}">Регистрация</a>
             {% if user.is_authenticated %}
             <form action="{% url 'logout' %}" method="post">

@@ -45,6 +45,8 @@
     <Compile Include="Auto_DjangoWeb_IvanovLev\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="media\video1.mp4" />
+    <Content Include="media\video2.mp4" />
     <Content Include="static\content\auto.ru_logo.jpeg" />
     <Content Include="static\content\banner1.jpg" />
     <Content Include="static\content\banner2.jpg" />
@@ -66,13 +68,16 @@
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\layout.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\links.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\login.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\newpost.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\pool.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\registration.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\videopost.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="auto\" />
     <Folder Include="auto\migrations\" />
     <Folder Include="Auto_DjangoWeb_IvanovLev\" />
+    <Folder Include="media\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="static\content\" />

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
 from .models import Blog, Comment
-from .forms import PoolForm, CommentForm
+from .forms import PoolForm, CommentForm, BlogForm
 
 # Функции = контроллеры
 
@@ -75,3 +75,20 @@ def blogpost(request, parametr):
         'comments': comments,
         'form': form,
     })
+
+def newpost(request):
+    if request.method == "POST":
+        blogform = BlogForm(request.POST, request.FILES)
+        if blogform.is_valid():
+            blog_f = blogform.save(commit=False)
+            blog_f.posted = datetime.now()
+            blog_f.author = request.user
+            blog_f.save()
+            return redirect('blog')
+    else:
+        blogform = BlogForm()
+    
+    return render(request, 'Auto_DjangoWeb_IvanovLev/newpost.html', {'blogform': blogform})
+
+def videopost(request):
+    return render(request, 'Auto_DjangoWeb_IvanovLev/videopost.html', {'title': 'Видео'})

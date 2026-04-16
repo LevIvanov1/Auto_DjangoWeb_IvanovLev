@@ -23,6 +23,9 @@ from django.views.generic.base import RedirectView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import views as auth_views
 from datetime import datetime
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
  
 
 urlpatterns = [
@@ -44,10 +47,14 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('blog/', views.blog, name='blog'),
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
+    path('newpost/', views.newpost, name='newpost'),
+    path('videopost/', views.videopost, name='videopost'),
 
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 
 # https://apps.openedu.ru/learning/course/course-v1:spbstu+WEBPYT+spring_2026/block-v1:spbstu+WEBPYT+spring_2026+type@sequential+block@7aede4c4d9ec40879036bd20ca092fc3/block-v1:spbstu+WEBPYT+spring_2026+type@vertical+block@708c1f3a749545b381158cc4d861fea3
