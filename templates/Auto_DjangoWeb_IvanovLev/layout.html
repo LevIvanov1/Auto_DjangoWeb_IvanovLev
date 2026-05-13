@@ -30,7 +30,9 @@
             <a href="{% url 'newpost' %}">Добавить статью</a>
             {% endif %}
             <a href="{% url 'videopost' %}">Видео</a>
+            {% if not user.is_authenticated %}
             <a href="{% url 'registration' %}">Регистрация</a>
+            {% endif %}
             {% if user.is_authenticated %}
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}

@@ -47,6 +47,8 @@
   <ItemGroup>
     <Content Include="media\video1.mp4" />
     <Content Include="media\video2.mp4" />
+    <Content Include="media\zastavka1.jpg" />
+    <Content Include="media\zastavka2.jpg" />
     <Content Include="static\content\auto.ru_logo.jpeg" />
     <Content Include="static\content\banner1.jpg" />
     <Content Include="static\content\banner2.jpg" />
