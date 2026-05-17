@@ -4,6 +4,12 @@
     <Name>Auto_DjangoWeb_IvanovLev</Name>
     <RootNamespace>Auto_DjangoWeb_IvanovLev</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
+    <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <TestFramework>none</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,8 +69,13 @@
     <Content Include="static\scripts\jquery-1.10.2.js" />
     <Content Include="static\vaz_set.jpeg" />
     <Content Include="static\ВАЗ_2102.jpg" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\add_catalog_item.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\add_category.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\blog.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\blogpost.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\catalog.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\catalog_item.html" />
+    <Content Include="templates\Auto_DjangoWeb_IvanovLev\category.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\contacts.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\index.html" />
     <Content Include="templates\Auto_DjangoWeb_IvanovLev\layout.html" />

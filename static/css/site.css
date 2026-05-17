@@ -99,7 +99,6 @@ h3 {
 
 p {
     margin-bottom: 20px;
-    text-align: justify;
     font-size: 17px;
     font-family: 'Georgia', serif;
 }
@@ -211,7 +210,8 @@ footer {
 }
 
 a {
-    color: #C7C7FF;
+    color: #5353ff;
+    margin-top: 10px;
 }
 
     a:hover {
@@ -337,4 +337,24 @@ h3 a, h3 a:visited {
 
 .carousel-control {
     background: none;
+}
+
+
+.catalog-categories, .catalog-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-card, .item-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    width: 240px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.price {
+    font-weight: bold;
+    color: #c0392b;
 }

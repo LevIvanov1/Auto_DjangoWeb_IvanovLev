@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-from .models import Blog, Comment
-from .forms import PoolForm, CommentForm, BlogForm
+from .models import Blog, Comment, Category, CatalogItem
+from .forms import PoolForm, CommentForm, BlogForm, CategoryForm, CatalogItemForm
 
 # Функции = контроллеры
 
@@ -92,3 +92,37 @@ def newpost(request):
 
 def videopost(request):
     return render(request, 'Auto_DjangoWeb_IvanovLev/videopost.html', {'title': 'Видео'})
+
+
+def catalog(request):
+    categories = Category.objects.all()
+    return render(request, 'Auto_DjangoWeb_IvanovLev/catalog.html', {'categories': categories})
+
+def category(request, category_id):
+    category_obj = Category.objects.get(id=category_id)
+    items = CatalogItem.objects.filter(category=category_obj)
+    return render(request, 'Auto_DjangoWeb_IvanovLev/category.html', {'category': category_obj, 'items': items})
+
+def catalog_item(request, item_id):
+    item = CatalogItem.objects.get(id=item_id)
+    return render(request, 'Auto_DjangoWeb_IvanovLev/catalog_item.html', {'item': item})
+
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('catalog')
+    else:
+        form = CategoryForm()
+    return render(request, 'Auto_DjangoWeb_IvanovLev/add_category.html', {'form': form})
+
+def add_catalog_item(request):
+    if request.method == 'POST':
+        form = CatalogItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('catalog')
+    else:
+        form = CatalogItemForm()
+    return render(request, 'Auto_DjangoWeb_IvanovLev/add_catalog_item.html', {'form': form})

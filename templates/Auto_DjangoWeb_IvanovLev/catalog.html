@@ -1,0 +1,16 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Каталог{% endblock %}
+{% block content %}
+<h2>Каталог</h2>
+<div class="catalog-categories">
+    {% for category in categories %}
+    <div class="category-card">
+        <h3><a href="{% url 'category' category.id %}">{{ category.name }}</a></h3>
+        <p>{{ category.description }}</p>
+    </div>
+    {% empty %}
+    <p>Категорий пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}

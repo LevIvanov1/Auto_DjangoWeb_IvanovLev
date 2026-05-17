@@ -1,0 +1,15 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | {{ item.name }}{% endblock %}
+{% block content %}
+<h2>{{ item.name }}</h2>
+<p><strong>Категория:</strong> <a href="{% url 'category' item.category.id %}">{{ item.category.name }}</a></p>
+{% if item.image %}
+<img src="{{ item.image.url }}" alt="{{ item.name }}" width="300">
+{% endif %}
+<p><strong>Цена:</strong> {{ item.price }} руб.</p>
+<h3>Описание</h3>
+<p>{{ item.full_description|linebreaksbr }}</p>
+<p><a href="{% url 'category' item.category.id %}">← Назад к категории</a></p>
+<p><a href="{% url 'catalog' %}">← Назад к каталогу</a></p>
+{% endblock %}

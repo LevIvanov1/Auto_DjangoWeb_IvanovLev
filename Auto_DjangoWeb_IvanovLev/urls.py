@@ -49,7 +49,11 @@ urlpatterns = [
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
     path('newpost/', views.newpost, name='newpost'),
     path('videopost/', views.videopost, name='videopost'),
-
+    path('catalog/', views.catalog, name='catalog'),
+    path('category/<int:category_id>/', views.category, name='category'),
+    path('catalog_item/<int:item_id>/', views.catalog_item, name='catalog_item'),
+    path('add_category/', views.add_category, name='add_category'),
+    path('add_catalog_item/', views.add_catalog_item, name='add_catalog_item'),
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
 ]
