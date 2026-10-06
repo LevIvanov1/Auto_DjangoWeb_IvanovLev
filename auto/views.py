@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-from .models import Blog, Comment, Category, CatalogItem
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .models import Blog, Comment, Category, CatalogItem, Order, OrderItem
 from .forms import PoolForm, CommentForm, BlogForm, CategoryForm, CatalogItemForm
 
 # Функции = контроллеры
@@ -126,3 +127,75 @@ def add_catalog_item(request):
     else:
         form = CatalogItemForm()
     return render(request, 'Auto_DjangoWeb_IvanovLev/add_catalog_item.html', {'form': form})
+
+def is_manager(user):
+    return user.is_staff
+
+@login_required
+def cart_view(request):
+    cart = request.session.get('cart', {})
+    items = []
+    total = 0
+    for product_id, quantity in cart.items():
+        product = CatalogItem.objects.get(id=product_id)
+        item_total = product.price * quantity
+        total += item_total
+        items.append({'product': product, 'quantity': quantity, 'item_total': item_total})
+    return render(request, 'Auto_DjangoWeb_IvanovLev/cart.html', {'items': items, 'total': total})
+
+
+@login_required
+def cart_add(request, product_id):
+    cart = request.session.get('cart', {})
+    cart[str(product_id)] = cart.get(str(product_id), 0) + 1
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
+@login_required
+def cart_remove(request, product_id):
+    cart = request.session.get('cart', {})
+    if str(product_id) in cart:
+        del cart[str(product_id)]
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
+@login_required
+def checkout(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('cart')
+
+    order = Order.objects.create(user=request.user, total_price=0)
+    total = 0
+    for product_id, quantity in cart.items():
+        product = CatalogItem.objects.get(id=product_id)
+        OrderItem.objects.create(order=order, product=product, price=product.price, quantity=quantity)
+        total += product.price * quantity
+    order.total_price = total
+    order.save()
+
+    request.session['cart'] = {}
+    return redirect('my_orders')
+
+
+@login_required
+def my_orders(request):
+    orders = Order.objects.filter(user=request.user)
+    return render(request, 'Auto_DjangoWeb_IvanovLev/my_orders.html', {'orders': orders})
+
+
+@user_passes_test(is_manager)
+def manager_orders(request):
+    orders = Order.objects.all()
+    return render(request, 'Auto_DjangoWeb_IvanovLev/manager_orders.html', {'orders': orders})
+
+
+@user_passes_test(is_manager)
+def order_status(request, order_id):
+    if request.method == 'POST':
+        order = Order.objects.get(id=order_id)
+        order.status = request.POST.get('status')
+        order.save()
+    return redirect('manager_orders')

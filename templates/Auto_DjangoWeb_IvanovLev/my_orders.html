@@ -1,0 +1,18 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Мои заказы{% endblock %}
+{% block content %}
+<h2>Мои заказы</h2>
+{% for order in orders %}
+<div class="order-card">
+    <p><strong>Заказ №{{ order.id }}</strong></p>
+    <p>Дата: {{ order.created_at|date:"d.m.Y H:i" }}</p>
+    <p>Статус: {{ order.get_status_display }}</p>
+    <p>Сумма: {{ order.total_price }} руб.</p>
+</div>
+{% empty %}
+<div class="cart-empty">
+    <p>У вас пока нет заказов</p>
+</div>
+{% endfor %}
+{% endblock %}

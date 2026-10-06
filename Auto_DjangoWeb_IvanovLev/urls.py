@@ -54,6 +54,13 @@ urlpatterns = [
     path('catalog_item/<int:item_id>/', views.catalog_item, name='catalog_item'),
     path('add_category/', views.add_category, name='add_category'),
     path('add_catalog_item/', views.add_catalog_item, name='add_catalog_item'),
+    path('cart/', views.cart_view, name='cart'),
+    path('cart/add/<int:product_id>/', views.cart_add, name='cart_add'),
+    path('cart/remove/<int:product_id>/', views.cart_remove, name='cart_remove'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('my_orders/', views.my_orders, name='my_orders'),
+    path('manager_orders/', views.manager_orders, name='manager_orders'),
+    path('order_status/<int:order_id>/', views.order_status, name='order_status'),
     # -
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
 ]

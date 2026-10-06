@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+# ЛевИванов - 6838fr3hg4epofjo
+
 import os
 import posixpath
 
@@ -105,3 +107,6 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = '/login/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

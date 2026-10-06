@@ -67,3 +67,38 @@ class CatalogItem(models.Model):
     class Meta:
         verbose_name = "Элемент каталога"
         verbose_name_plural = "Элементы каталога"
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('new', 'Новый'),
+        ('confirmed', 'Подтверждён'),
+        ('cancelled', 'Отменён'),
+        ('completed', 'Выполнен'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new', verbose_name="Статус")
+    total_price = models.DecimalField(max_digits=12, decimal_places=2, default=0, verbose_name="Итоговая стоимость")
+    created_at = models.DateTimeField(default=datetime.now, verbose_name="Дата создания")
+
+    def __str__(self):
+        return f"Заказ №{self.id} от {self.user.username}"
+
+    class Meta:
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"
+        ordering = ['-created_at']
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name="Заказ")
+    product = models.ForeignKey(CatalogItem, on_delete=models.CASCADE, verbose_name="Товар")
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена на момент заказа")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Количество")
+
+    def __str__(self):
+        return f"{self.product.name} x{self.quantity}"
+
+    class Meta:
+        verbose_name = "Элемент заказа"
+        verbose_name_plural = "Элементы заказа"

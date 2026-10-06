@@ -8,6 +8,7 @@
 <img src="{{ item.image.url }}" alt="{{ item.name }}" width="300">
 {% endif %}
 <p><strong>Цена:</strong> {{ item.price }} руб.</p>
+<a href="{% url 'cart_add' item.id %}" class="btn-cart">В корзину</a>
 <h3>Описание</h3>
 <p>{{ item.full_description|linebreaksbr }}</p>
 <p><a href="{% url 'category' item.category.id %}">← Назад к категории</a></p>

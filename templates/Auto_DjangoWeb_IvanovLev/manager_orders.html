@@ -1,0 +1,38 @@
+{% extends "Auto_DjangoWeb_IvanovLev/layout.html" %}
+{% load static %}
+{% block title %}AutoStory | Заказы{% endblock %}
+{% block content %}
+<h2>Управление заказами</h2>
+<table class="orders-table">
+    <tr>
+        <th>ID</th>
+        <th>Дата</th>
+        <th>Пользователь</th>
+        <th>Сумма</th>
+        <th>Статус</th>
+        <th>Действие</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+        <td>{{ order.user.username }}</td>
+        <td>{{ order.total_price }} руб.</td>
+        <td>
+            <form method="post" action="{% url 'order_status' order.id %}" style="display: inline;">
+                {% csrf_token %}
+                <select name="status" class="status-select">
+                    <option value="new" {% if order.status == 'new' %}selected{% endif %}>Новый</option>
+                    <option value="confirmed" {% if order.status == 'confirmed' %}selected{% endif %}>Подтверждён</option>
+                    <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>Отменён</option>
+                    <option value="completed" {% if order.status == 'completed' %}selected{% endif %}>Выполнен</option>
+                </select>
+                <button type="submit" class="btn-save-status">Сохранить</button>
+            </form>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6" style="text-align: center;">Заказов пока нет</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
