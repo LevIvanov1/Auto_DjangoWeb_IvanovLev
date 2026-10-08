@@ -2,6 +2,8 @@
 {% load static %}
 {% block title %}AutoStory | {{ item.name }}{% endblock %}
 {% block content %}
+<a href="{% url 'category' item.category.id %}" class="btn-back">← Назад</a>
+
 <h2>{{ item.name }}</h2>
 <p><strong>Категория:</strong> <a href="{% url 'category' item.category.id %}">{{ item.category.name }}</a></p>
 {% if item.image %}
@@ -11,6 +13,4 @@
 <a href="{% url 'cart_add' item.id %}" class="btn-cart">В корзину</a>
 <h3>Описание</h3>
 <p>{{ item.full_description|linebreaksbr }}</p>
-<p><a href="{% url 'category' item.category.id %}">← Назад к категории</a></p>
-<p><a href="{% url 'catalog' %}">← Назад к каталогу</a></p>
 {% endblock %}

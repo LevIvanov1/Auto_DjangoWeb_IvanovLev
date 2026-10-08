@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}AutoStory | {{ post_1.title }}{% endblock %}
 {% block content %}
+<a href="{% url 'blog' %}" class="btn-back">← Назад к новостям</a>
 <h2>{{ post_1.title }}</h2>
 
 {% if post_1.image and post_1.image.url != '/media/temp.jpg' %}

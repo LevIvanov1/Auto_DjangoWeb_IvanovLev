@@ -2,7 +2,12 @@
 {% load static %}
 {% block title %}AutoStory | {{ title }}{% endblock %}
 {% block content %}
-<h2>{{ title }}</h2>
+<div class="page-header">
+    <h2>{{ title }}</h2>
+    {% if user.is_superuser %}
+    <a href="{% url 'newpost' %}" class="btn-add">+ Добавить статью</a>
+    {% endif %}
+</div>
 {% for post in posts %}
 <hr>
 <h3>{{ post.title }}</h3>

@@ -2,7 +2,13 @@
 {% load static %}
 {% block title %}AutoStory | {{ category.name }}{% endblock %}
 {% block content %}
-<h2>{{ category.name }}</h2>
+<a href="{% url 'catalog' %}" class="btn-back">← Назад к каталогу</a>
+<div class="page-header">
+    <h2>{{ category.name }}</h2>
+    {% if user.is_superuser %}
+    <a href="{% url 'add_catalog_item' %}" class="btn-add">+ Добавить товар</a>
+    {% endif %}
+</div>
 <p>{{ category.description }}</p>
 <div class="catalog-items">
     {% for item in items %}
@@ -18,5 +24,4 @@
     <p>В этой категории пока нет товаров.</p>
     {% endfor %}
 </div>
-<p><a href="{% url 'catalog' %}">← Назад к категориям</a></p>
 {% endblock %}

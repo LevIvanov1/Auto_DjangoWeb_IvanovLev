@@ -2,7 +2,12 @@
 {% load static %}
 {% block title %}AutoStory | Каталог{% endblock %}
 {% block content %}
-<h2>Каталог</h2>
+<div class="page-header">
+    <h2>Каталог</h2>
+    {% if user.is_superuser %}
+    <a href="{% url 'add_category' %}" class="btn-add">+ Добавить категорию</a>
+    {% endif %}
+</div>
 <div class="catalog-categories">
     {% for category in categories %}
     <div class="category-card">

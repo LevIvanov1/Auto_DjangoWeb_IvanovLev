@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-# ЛевИванов - 6838fr3hg4epofjo
+# admin - 1234 (активный, статус персонала, статус суперпользователя)
+# Менеджер - TfPLZM7KpEcdx4n (активный, статус персонала) 
+# Клиент - EpGs6nGJmydMSkF (активный)
+# Тестовый - b3HDXRrjrfA8j9y (активный)
+
 
 import os
 import posixpath
